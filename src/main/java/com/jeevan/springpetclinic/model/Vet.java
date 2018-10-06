@@ -1,0 +1,5 @@
+package com.jeevan.springpetclinic.model;
+
+public class Vet extends Person {
+
+}
