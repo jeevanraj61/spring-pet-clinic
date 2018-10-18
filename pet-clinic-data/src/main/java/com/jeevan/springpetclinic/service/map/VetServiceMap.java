@@ -2,10 +2,11 @@ package com.jeevan.springpetclinic.service.map;
 
 import com.jeevan.springpetclinic.model.Vet;
 import com.jeevan.springpetclinic.service.CrudService;
+import com.jeevan.springpetclinic.service.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
