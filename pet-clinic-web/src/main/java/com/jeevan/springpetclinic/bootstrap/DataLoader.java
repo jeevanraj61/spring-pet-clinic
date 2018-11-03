@@ -1,8 +1,10 @@
 package com.jeevan.springpetclinic.bootstrap;
 
 import com.jeevan.springpetclinic.model.Owner;
+import com.jeevan.springpetclinic.model.PetType;
 import com.jeevan.springpetclinic.model.Vet;
 import com.jeevan.springpetclinic.service.OwnerService;
+import com.jeevan.springpetclinic.service.PetTypeService;
 import com.jeevan.springpetclinic.service.VetService;
 import com.jeevan.springpetclinic.service.map.OwnerServiceMap;
 import com.jeevan.springpetclinic.service.map.VetServiceMap;
@@ -16,13 +18,24 @@ public class DataLoader implements CommandLineRunner {
 
     private final VetService vetService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    private final PetTypeService petTypeService;
+
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
 
     public void run(String... args)throws Exception{
+
+        PetType dog  = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat  = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Jeevan");
