@@ -1,10 +1,7 @@
 package com.jeevan.springpetclinic.bootstrap;
 
 import com.jeevan.springpetclinic.model.*;
-import com.jeevan.springpetclinic.service.OwnerService;
-import com.jeevan.springpetclinic.service.PetTypeService;
-import com.jeevan.springpetclinic.service.SpecialityService;
-import com.jeevan.springpetclinic.service.VetService;
+import com.jeevan.springpetclinic.service.*;
 import com.jeevan.springpetclinic.service.map.OwnerServiceMap;
 import com.jeevan.springpetclinic.service.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
@@ -23,12 +20,15 @@ public class DataLoader implements CommandLineRunner {
 
     private final SpecialityService specialityService;
 
+    private final VisitService visitService;
+
     public DataLoader(OwnerService ownerService, VetService vetService,
-                      PetTypeService petTypeService,SpecialityService specialityService) {
+                      PetTypeService petTypeService,SpecialityService specialityService,VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
 
@@ -68,6 +68,7 @@ public class DataLoader implements CommandLineRunner {
         owner1.setTelephone("1234556");
         ownerService.save(owner1);
 
+
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedDogPetType);
         mikesPet.setOwner(owner1);
@@ -75,6 +76,11 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setName("Rosco");
         owner1.getPets().add(mikesPet);
         ownerService.save(owner1);
+        Visit visit = new Visit();
+        visit.setPet(mikesPet);
+        visit.setDate(LocalDate.now());
+        visit.setDescription("Fresh Dog");
+        visitService.save(visit);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Manja");
