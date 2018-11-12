@@ -2,8 +2,6 @@ package com.jeevan.springpetclinic.bootstrap;
 
 import com.jeevan.springpetclinic.model.*;
 import com.jeevan.springpetclinic.service.*;
-import com.jeevan.springpetclinic.service.map.OwnerServiceMap;
-import com.jeevan.springpetclinic.service.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
