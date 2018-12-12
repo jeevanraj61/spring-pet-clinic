@@ -12,6 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
+@MappedSuperclass
 @Table(name = "owners")
 public class Owner extends Person {
 
